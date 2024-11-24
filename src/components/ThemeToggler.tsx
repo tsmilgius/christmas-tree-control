@@ -1,6 +1,6 @@
-import { useColorScheme } from "@mui/material/styles";
-import { DarkModeTwoTone, LightModeTwoTone } from "@mui/icons-material";
-import { Box, IconButton, Tooltip } from "@mui/material";
+import { useColorScheme } from '@mui/material/styles';
+import { DarkModeTwoTone, LightModeTwoTone } from '@mui/icons-material';
+import { IconButton, Tooltip } from '@mui/material';
 
 const ThemeToggler = () => {
   const { mode, setMode } = useColorScheme();
@@ -10,21 +10,15 @@ const ThemeToggler = () => {
   }
 
   const toggleTheme = () => {
-    setMode(mode === "light" ? "dark" : "light");
+    setMode(mode === 'light' ? 'dark' : 'light');
   };
 
   return (
-    <Box sx={{ position: "absolute", top: 0, right: 0, padding: 2 }}>
-      <Tooltip title="Toggle theme">
-        <IconButton
-          size="large"
-          onClick={toggleTheme}
-          aria-label="toggle theme"
-        >
-          {mode === "light" ? <DarkModeTwoTone /> : <LightModeTwoTone />}
-        </IconButton>
-      </Tooltip>
-    </Box>
+    <Tooltip title="Toggle theme">
+      <IconButton size="large" onClick={toggleTheme} aria-label="toggle theme">
+        {mode === 'light' ? <DarkModeTwoTone /> : <LightModeTwoTone />}
+      </IconButton>
+    </Tooltip>
   );
 };
 
