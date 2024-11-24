@@ -1,23 +1,37 @@
-import { Box, Modal, Typography } from "@mui/material";
+import { Box, Button, Modal, TextField } from "@mui/material";
 import christmasTree from "../assets/park.svg";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
+import { useUserStore } from "../store/store";
 
 const style = {
   position: "absolute",
-  top: "50%",
+  top: "40%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
+  width: 420,
   bgcolor: "background.paper",
-  border: "2px solid #000",
   boxShadow: 24,
-  p: 4,
+  p: 5,
 };
 
 const LandingScreen = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const [inputValue, setInputValue] = useState("");
+  const setUserName = useUserStore((state) => state.setUserName);
+
+  const handleGo = () => {
+    handleClose();
+    setUserName(inputValue);
+  };
+
+  const handleInputChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setInputValue(e.target.value);
+  };
+
   return (
     <>
       <Box
@@ -48,19 +62,26 @@ const LandingScreen = () => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography
-            id="modal-modal-title"
-            variant="h6"
-            component="h2"
+          <TextField
+            label="Enter your name"
+            variant="outlined"
+            color="success"
+            focused
+            onChange={(e) => {
+              handleInputChange(e);
+            }}
+            onKeyUp={(e) => {
+              if (e.key === "Enter") handleGo();
+            }}
+          />
+          <Button
+            variant="contained"
+            color="success"
+            sx={{ ml: 1, mr: 0, pt: 2, pb: 2 }}
+            onClick={handleGo}
           >
-            Enter your name
-          </Typography>
-          <Typography
-            id="modal-modal-description"
-            sx={{ mt: 2 }}
-          >
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
+            Go
+          </Button>
         </Box>
       </Modal>
     </>
