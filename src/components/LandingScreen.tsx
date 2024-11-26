@@ -3,6 +3,7 @@ import { useUserStore } from '../store/store';
 import Logo from './Logo';
 import NameModal from './NameModal';
 import TopBar from './TopBar';
+import PresetList from './PresetList';
 
 const LandingScreen = () => {
   const [open, setOpen] = useState(false);
@@ -24,8 +25,12 @@ const LandingScreen = () => {
   return (
     <>
       <TopBar userName={userName} />
-      <Logo onClick={handleOpen} />
+
+      {!userName && <Logo onClick={handleOpen} />}
+
       <NameModal open={open} handleClose={handleClose} handleInputChange={handleInputChange} handleGo={handleGo} />
+
+      {userName && <PresetList />}
     </>
   );
 };

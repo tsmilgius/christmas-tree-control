@@ -14,7 +14,7 @@ const Logo = ({ onClick }: LogoProps) => {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          height: '100vh',
+          height: '75vh',
         }}
       >
         <img

@@ -38,10 +38,10 @@ const NameModal = ({ open, handleClose, handleInputChange, handleGo }: NameModal
 
 const style = {
   position: 'absolute',
-  top: '40%',
+  top: '20%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 420,
+  width: 410,
   bgcolor: 'background.paper',
   boxShadow: 24,
   p: 5,
